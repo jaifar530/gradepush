@@ -1,15 +1,22 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-
 function local_gradepush_quiz_completed($event) {
-    // Define the path to the error log file
-    $logfile = __DIR__ . '/error.log';
-    
-    // Log a simple message to check if the function is being called
-    error_log("local_gradepush_quiz_completed function called.\n", 3, $logfile);
-}
+    // Define the path to the log file
+    $logfile = __DIR__ . '/gradepush.log';
 
+    // Log the start of the function execution
+    error_log("--- local_gradepush_quiz_completed function started ---\n", 3, $logfile);
+
+    // Log the event details
+    error_log("Event triggered: " . $event->eventname . "\n", 3, $logfile);
+    error_log("Event data: " . print_r($event->get_data(), true) . "\n", 3, $logfile);
+
+    // Rest of the function code...
+
+    // Log the end of the function execution
+    error_log("--- local_gradepush_quiz_completed function completed ---\n", 3, $logfile);
+}
 
 // function local_gradepush_quiz_completed($event) {
 //     global $DB;
