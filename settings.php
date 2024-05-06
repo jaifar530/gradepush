@@ -18,3 +18,11 @@ if ($ADMIN->fulltree) {
 
     $ADMIN->add('localplugins', $settings);
 }
+
+$settings = null;
+
+if ($hassiteconfig) {
+    $ADMIN->add('localplugins', new admin_externalpage('local_gradepush_manage',
+        get_string('pluginname', 'local_gradepush'),
+        new moodle_url('/admin/settings.php', ['section' => 'local_gradepush'])));
+}
