@@ -6,3 +6,6 @@ $string['quizid'] = 'Quiz ID';
 $string['enablelogging'] = 'Enable logging';
 $string['logtab'] = 'Error Logs';
 $string['gradestab'] = 'Sent Grades';
+$string['enablegrades'] = 'Enable sent grades display';
+$string['nologsfound'] = 'No error logs found.';
+$string['nogradesfound'] = 'No sent grades found.';

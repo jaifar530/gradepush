@@ -1,13 +1,22 @@
 <?php
 require_once(__DIR__ . '/../../config.php');
-require_once($CFG->libdir . '/adminlib.php');
+require_login();
+require_capability('moodle/site:config', context_system::instance());
 
-admin_externalpage_setup('local_gradepush_gradestab');
+$url = new moodle_url('/local/gradepush/grades.php');
+$PAGE->set_url($url);
+$PAGE->set_context(context_system::instance());
+$PAGE->set_pagelayout('admin');
+$PAGE->set_title(get_string('gradestab', 'local_gradepush'));
+$PAGE->set_heading(get_string('gradestab', 'local_gradepush'));
 
-$grades = $DB->get_records('local_gradepush_sent');
+if (get_config('local_gradepush', 'enablegrades')) {
+    $grades = $DB->get_records('local_gradepush_sent');
+} else {
+    $grades = [];
+}
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('gradestab', 'local_gradepush'));
 
 if (!empty($grades)) {
     $table = new html_table();
@@ -19,7 +28,7 @@ if (!empty($grades)) {
             $grade->quizid,
             $grade->grade,
             userdate($grade->timesent),
-        ]; 
+        ];
     }
 
     echo html_writer::table($table);

@@ -15,6 +15,13 @@ if ($ADMIN->fulltree) {
 
     $settings->add(new admin_setting_configcheckbox('local_gradepush/enablelogging',
         get_string('enablelogging', 'local_gradepush'), '', 0));
+    // ...
+    $settings->add(new admin_setting_configcheckbox('local_gradepush/enablelogging',
+        get_string('enablelogging', 'local_gradepush'), '', 0));
+
+    $settings->add(new admin_setting_configcheckbox('local_gradepush/enablegrades',
+        get_string('enablegrades', 'local_gradepush'), '', 1));
+    // ...
 
     $ADMIN->add('localplugins', $settings);
 }
