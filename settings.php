@@ -1,7 +1,7 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-if ($hassiteconfig) {
+if ($ADMIN->fulltree) {
     $settings = new admin_settingpage('local_gradepush', get_string('pluginname', 'local_gradepush'));
 
     $settings->add(new admin_setting_configtext('local_gradepush/endpoint',
@@ -15,4 +15,6 @@ if ($hassiteconfig) {
 
     $settings->add(new admin_setting_configcheckbox('local_gradepush/enablelogging',
         get_string('enablelogging', 'local_gradepush'), '', 0));
+
+    $ADMIN->add('localplugins', $settings);
 }
