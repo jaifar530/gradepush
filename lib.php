@@ -5,17 +5,25 @@ function local_gradepush_quiz_completed($event) {
     // Define the path to the log file
     $logfile = __DIR__ . '/gradepush.log';
 
-    // Log the start of the function execution
-    error_log("--- local_gradepush_quiz_completed function started ---\n", 3, $logfile);
+    try {
+        // Log the start of the function execution
+        error_log("--- local_gradepush_quiz_completed function started ---\n", 3, $logfile);
 
-    // Log the event details
-    error_log("Event triggered: " . $event->eventname . "\n", 3, $logfile);
-    error_log("Event data: " . print_r($event->get_data(), true) . "\n", 3, $logfile);
+        // Log the event details
+        error_log("Event triggered: " . $event->eventname . "\n", 3, $logfile);
+        error_log("Event data: " . print_r($event->get_data(), true) . "\n", 3, $logfile);
 
-    // Rest of the function code...
+        // Rest of the function code...
+        // Add your existing code here
 
-    // Log the end of the function execution
-    error_log("--- local_gradepush_quiz_completed function completed ---\n", 3, $logfile);
+        // Log the end of the function execution
+        error_log("--- local_gradepush_quiz_completed function completed ---\n", 3, $logfile);
+    } catch (Exception $e) {
+        // Log the exception details
+        error_log("--- Exception occurred ---\n", 3, $logfile);
+        error_log("Exception message: " . $e->getMessage() . "\n", 3, $logfile);
+        error_log("Exception trace: " . $e->getTraceAsString() . "\n", 3, $logfile);
+    }
 }
 
 // function local_gradepush_quiz_completed($event) {
